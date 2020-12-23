@@ -33,14 +33,12 @@ export default {
   methods: {
     async handleClick() {
       this.$emit("input", !this.value);
-    //   await this.$nextTick();
-    console.log(this.value);
-    
+      await this.$nextTick();
       this.setColor();
     },
     setColor() {
-        console.log(this.value,"this.value");
-        
+      console.log(this.value, "this.value");
+
       //    修改开关的颜色
       if (this.activeColor || this.inactiveColor) {
         let color = this.value ? this.activeColor : this.inactiveColor;
