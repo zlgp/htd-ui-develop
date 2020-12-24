@@ -7,6 +7,12 @@ Vue.config.productionTip = false
 
 // 引入字体文件
 import "./assets/fonts/iconfont.css"
+
+import Link from "./components/link.vue"
+Vue.component(Link.name, Link)
+
+import InputNumber from "./components/input-number.vue"
+Vue.component(InputNumber.name, InputNumber)
 // 全局注册button组件
 
 import Button from "./components/button.vue"
@@ -34,6 +40,7 @@ Vue.component(Form.name, Form)
 
 import FormItem from "./components/form-item.vue"
 Vue.component(FormItem.name, FormItem)
+
 new Vue({
   router,
   store,

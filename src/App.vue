@@ -1,5 +1,37 @@
 <template>
   <div id="app">
+    <!-- 下划线 -->
+    <h2>下划线</h2>
+    <div style="margin-bottom:100px">
+      <htd-link underline>主要链接</htd-link>
+      <htd-link type="primary" underline>主要链接</htd-link>
+      <htd-link type="success" underline>成功链接</htd-link>
+      <htd-link type="warning" underline>警告链接</htd-link>
+      <htd-link type="danger" underline>危险链接</htd-link>
+      <htd-link type="info" underline>信息链接</htd-link>
+    </div>
+    <!-- 是否禁用 -->
+    <div style="margin-bottom:100px">
+      <htd-link disabled>主要链接</htd-link>
+      <htd-link type="primary" href="https://element.eleme.io">主要链接</htd-link>
+      <htd-link type="success">成功链接</htd-link>
+      <htd-link type="warning">警告链接</htd-link>
+      <htd-link type="danger">危险链接</htd-link>
+      <htd-link type="info">信息链接</htd-link>
+    </div>
+    <!-- 加图标 -->
+    <div style="margin-bottom:100px">
+      <htd-link disabled>主要链接</htd-link>
+      <htd-link type="primary" href="https://element.eleme.io" icon="htd-icon-close">主要链接</htd-link>
+      <htd-link type="success">成功链接</htd-link>
+      <htd-link type="warning">警告链接</htd-link>
+      <htd-link type="danger" icon="htd-icon-search">警告链接</htd-link>
+      <htd-link type="info">
+        <i class="htd-icon-search"></i>
+        信息链接
+      </htd-link>
+    </div>
+    <!-- 按钮 -->
     <!-- type属性 -->
     <div class="row">
       <htd-button @click="handleClick($event)">默认</htd-button>
@@ -115,10 +147,21 @@
           <htd-input placeholder="请输入用户名" v-model="model.username"></htd-input>
         </htd-form-item>
         <htd-form-item label="开关">
-          <htd-switch  v-model="model.active"></htd-switch>
+          <htd-switch v-model="model.active"></htd-switch>
         </htd-form-item>
       </htd-form>
     </div>
+    <!-- 步进器 -->
+    <h2>步进器</h2>
+    <htd-input-number
+      v-model="number"
+      placeholder="请输入"
+      :step="5"
+      :min="1"
+      :max="20"
+      @blur="handleBlur($event)"
+      @change="handleChange"
+    ></htd-input-number>
   </div>
 </template>
 <script>
@@ -133,9 +176,10 @@ export default {
       checked: true,
       checkList: [],
       model: {
-        username:"",
-        active:true
-      }
+        username: "",
+        active: true
+      },
+      number: 1
     };
   },
   methods: {
@@ -143,6 +187,17 @@ export default {
     handleClick(e) {
       console.log(e);
       console.log(123);
+    },
+    // 步进器
+    handleBlur(e) {
+      console.log(e);
+      
+    },
+    handleChange(currentValue,oldValue){
+    console.log(currentValue);
+    console.log(oldValue);
+    
+    
     }
     // 弹窗框
     // close(value) {
@@ -160,5 +215,8 @@ export default {
 }
 .htd-input {
   width: 180px !important;
+}
+.htd-link {
+  margin-right: 20px;
 }
 </style>
