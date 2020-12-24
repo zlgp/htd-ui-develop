@@ -17,7 +17,23 @@ import Input from "./components/input.vue"
 Vue.component(Input.name, Input)
 import Switch from "./components/switch.vue"
 Vue.component(Switch.name, Switch)
+import Radio from "./components/radio.vue"
+Vue.component(Radio.name, Radio)
 
+import RadioGroup from "./components/radio-group.vue"
+Vue.component(RadioGroup.name, RadioGroup)
+
+import CheckBox from "./components/checkbox.vue"
+Vue.component(CheckBox.name, CheckBox)
+
+import CheckBoxGroup from "./components/checkbox-group.vue"
+Vue.component(CheckBoxGroup.name, CheckBoxGroup)
+
+import Form from "./components/form.vue"
+Vue.component(Form.name, Form)
+
+import FormItem from "./components/form-item.vue"
+Vue.component(FormItem.name, FormItem)
 new Vue({
   router,
   store,

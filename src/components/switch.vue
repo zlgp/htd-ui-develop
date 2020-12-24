@@ -1,9 +1,10 @@
 <template>
-  <label class="htd-switch" @click="handleClick()" :class="{'is-checked':value}">
+  <div class="htd-switch" @click="handleClick()" :class="{'is-checked':value}">
     <span class="htd-switch_core" ref="core">
       <span class="htd-switch_button"></span>
     </span>
-  </label>
+    <input type="checkbox" class="htd-switch_input" :name="name" ref="input" />
+  </div>
 </template>
 
 <script>
@@ -29,16 +30,17 @@ export default {
   },
   mounted() {
     this.setColor();
+    // 控制checkbox
+    this.$refs.input.checked = this.value;
   },
   methods: {
     async handleClick() {
       this.$emit("input", !this.value);
       await this.$nextTick();
       this.setColor();
+      this.$refs.input.checked = this.value;
     },
     setColor() {
-      console.log(this.value, "this.value");
-
       //    修改开关的颜色
       if (this.activeColor || this.inactiveColor) {
         let color = this.value ? this.activeColor : this.inactiveColor;
@@ -93,5 +95,13 @@ export default {
       transform: translateX(20px);
     }
   }
+}
+// 隐藏input标签
+.htd-switch_input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
 }
 </style>

@@ -68,15 +68,57 @@
     </htd-dialog>-->
 
     <!--input  -->
-     <!-- v-model实质是个语法糖,
-    本质是注册:value="value" 注册@input事件, -->
-    <htd-input type="password" placeholder="请输入内容" name="username" v-model="username" clearable showPassword></htd-input>
-     <br>
+    <!-- v-model实质是个语法糖,
+    本质是注册:value="value" 注册@input事件,-->
+    <htd-input
+      type="password"
+      placeholder="请输入内容"
+      name="username"
+      v-model="username"
+      clearable
+      showPassword
+    ></htd-input>
+    <br />
 
-     <!-- 开关 -->
-     <htd-switch name="username" v-model="active" active-color="#000000" inactive-color="#ff0000"></htd-switch>
-  
-  
+    <!-- 开关 -->
+    <htd-switch name="username" v-model="active" active-color="#000000" inactive-color="#ff0000"></htd-switch>
+    <br />
+    <!-- radio -->
+    <div>
+      <htd-radio label="1" v-model="gender">男</htd-radio>
+      <htd-radio label="0" v-model="gender">女</htd-radio>
+    </div>
+    <!-- radio组 -->
+    <div>
+      <h1>radio组</h1>
+      <htd-radio-group v-model="genderGroup">
+        <htd-radio label="1">男</htd-radio>
+        <htd-radio label="0">女</htd-radio>
+      </htd-radio-group>
+    </div>
+
+    <div>
+      <htd-checkbox label="1" v-model="checked"></htd-checkbox>
+    </div>
+
+    <div>
+      <htd-checkbox-group v-model="checkList">
+        <htd-checkbox label="复选框 A"></htd-checkbox>
+        <htd-checkbox label="复选框 B"></htd-checkbox>
+      </htd-checkbox-group>
+    </div>
+
+    <!-- form组件 -->
+    <div>
+      <htd-form :model="model" label-width="400px">
+        <htd-form-item label="用户名">
+          <htd-input placeholder="请输入用户名" v-model="model.username"></htd-input>
+        </htd-form-item>
+        <htd-form-item label="开关">
+          <htd-switch  v-model="model.active"></htd-switch>
+        </htd-form-item>
+      </htd-form>
+    </div>
   </div>
 </template>
 <script>
@@ -85,7 +127,15 @@ export default {
     return {
       visible: false,
       username: "",
-      active:false
+      active: false,
+      gender: "1",
+      genderGroup: "1",
+      checked: true,
+      checkList: [],
+      model: {
+        username:"",
+        active:true
+      }
     };
   },
   methods: {
@@ -110,6 +160,5 @@ export default {
 }
 .htd-input {
   width: 180px !important;
-  
 }
 </style>
