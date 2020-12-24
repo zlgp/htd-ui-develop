@@ -162,6 +162,11 @@
       @blur="handleBlur($event)"
       @change="handleChange"
     ></htd-input-number>
+    <!-- select -->
+    <h2>select</h2>
+    <htd-select>
+      
+    </htd-select>
   </div>
 </template>
 <script>

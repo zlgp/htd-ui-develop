@@ -41,6 +41,10 @@ Vue.component(Form.name, Form)
 import FormItem from "./components/form-item.vue"
 Vue.component(FormItem.name, FormItem)
 
+
+import Select from "./components/select.vue"
+Vue.component(Select.name, Select)
+
 new Vue({
   router,
   store,
