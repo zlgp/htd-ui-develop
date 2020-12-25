@@ -162,11 +162,17 @@
       @blur="handleBlur($event)"
       @change="handleChange"
     ></htd-input-number>
-    <!-- select -->
-    <h2>select</h2>
-    <htd-select>
-      
-    </htd-select>
+
+    <!-- 轮播图 -->
+    <h2>轮播图</h2>
+    <htd-carousel height="300px" :initialIndex="0">
+      <htd-carousel-item v-for="item in 4" :key="item">
+        <h3 class="small">{{ item }}</h3>
+      </htd-carousel-item>
+    </htd-carousel>
+    <!-- 评分 -->
+    <h2>评分</h2>
+    <htd-rate v-model="rate" @change="handelChange($event)" :disabled="false"></htd-rate>
   </div>
 </template>
 <script>
@@ -184,7 +190,8 @@ export default {
         username: "",
         active: true
       },
-      number: 1
+      number: 1,
+      rate: 0
     };
   },
   methods: {
@@ -196,18 +203,18 @@ export default {
     // 步进器
     handleBlur(e) {
       console.log(e);
-      
     },
-    handleChange(currentValue,oldValue){
-    console.log(currentValue);
-    console.log(oldValue);
-    
-    
-    }
+    handleChange(currentValue, oldValue) {
+      console.log(currentValue);
+      console.log(oldValue);
+    },
     // 弹窗框
     // close(value) {
     //   this.visible = value;
     // }
+    handelChange(e) {
+      console.log(e.target.value);
+    }
   }
 };
 </script>
@@ -223,5 +230,20 @@ export default {
 }
 .htd-link {
   margin-right: 20px;
+}
+.htd-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 150px;
+  margin: 0;
+}
+
+.htd-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.htd-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
 }
 </style>

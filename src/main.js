@@ -45,6 +45,16 @@ Vue.component(FormItem.name, FormItem)
 import Select from "./components/select.vue"
 Vue.component(Select.name, Select)
 
+import Carousel from "./components/carousel.vue"
+Vue.component(Carousel.name, Carousel)
+
+import CarouselItem from "./components/carousel-item.vue"
+Vue.component(CarouselItem.name, CarouselItem)
+
+import Rate from "./components/rate.vue"
+Vue.component(Rate.name, Rate)
+
+
 new Vue({
   router,
   store,
