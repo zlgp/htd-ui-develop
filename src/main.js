@@ -54,6 +54,10 @@ Vue.component(CarouselItem.name, CarouselItem)
 import Rate from "./components/rate.vue"
 Vue.component(Rate.name, Rate)
 
+import Tag from "./components/tag.vue"
+Vue.component(Tag.name, Tag)
+
+
 
 new Vue({
   router,

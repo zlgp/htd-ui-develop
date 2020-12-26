@@ -173,6 +173,46 @@
     <!-- 评分 -->
     <h2>评分</h2>
     <htd-rate v-model="rate" @change="handelChange($event)" :disabled="false"></htd-rate>
+    <!-- tag标签 -->
+    <h2>tag标签</h2>
+    <htd-tag hit>标签一</htd-tag>
+    <htd-tag type="success" hit>标签二</htd-tag>
+    <htd-tag type="info" hit>标签三</htd-tag>
+    <htd-tag type="warning" hit>标签四</htd-tag>
+    <htd-tag type="danger" hit>标签五</htd-tag>
+    <br />
+    <!-- 可关闭 -->
+    <htd-tag
+      v-for="tag in tags"
+      :key="tag.name"
+      closable
+      :type="tag.type"
+      @close="handleClose($event)"
+    >{{tag.name}}</htd-tag>
+    <br />
+
+    <!-- 尺寸 -->
+    <htd-tag closable>默认标签</htd-tag>
+    <htd-tag size="medium" closable>中等标签</htd-tag>
+    <htd-tag size="small" closable>小型标签</htd-tag>
+    <htd-tag size="mini" closable>超小标签</htd-tag>
+    <br />
+    <!-- 主题dark -->
+    <htd-tag closable effect="dark" hit>默认标签</htd-tag>
+    <htd-tag type="success" closable effect="dark" hit>中等标签</htd-tag>
+    <htd-tag type="info" closable effect="dark" hit>小型标签</htd-tag>
+    <htd-tag type="warning" closable effect="dark" hit>超小标签</htd-tag>
+    <htd-tag type="danger" closable effect="dark" hit>超小标签</htd-tag>
+    <br />
+    <!-- 主题plain -->
+    <htd-tag closable effect="plain" color="#000000">默认标签</htd-tag>
+    <htd-tag type="success" closable effect="plain">中等标签</htd-tag>
+    <htd-tag type="info" closable effect="plain">小型标签</htd-tag>
+    <htd-tag type="warning" closable effect="plain">超小标签</htd-tag>
+    <htd-tag type="danger" closable effect="plain">超小标签</htd-tag>
+
+
+    <!--  -->
   </div>
 </template>
 <script>
@@ -191,7 +231,14 @@ export default {
         active: true
       },
       number: 1,
-      rate: 0
+      rate: 0,
+      tags: [
+        { name: "标签一", type: "" },
+        { name: "标签二", type: "success" },
+        { name: "标签三", type: "info" },
+        { name: "标签四", type: "warning" },
+        { name: "标签五", type: "danger" }
+      ]
     };
   },
   methods: {
@@ -214,6 +261,9 @@ export default {
     // }
     handelChange(e) {
       console.log(e.target.value);
+    },
+    handleClose(e) {
+      console.log(e);
     }
   }
 };

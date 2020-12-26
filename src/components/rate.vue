@@ -4,7 +4,7 @@
       class="htd-rate__item"
       v-for="(item,index) in max"
       :key="index"
-      @mouseenter="handleEnter(item,$event)"
+      @mouseenter="handleEnter(item)"
       @mouseleave="hadnleLeave(item)"
       :style="{ cursor: disabled ? 'auto' : 'pointer' }"
     >
@@ -41,7 +41,7 @@ export default {
       default() {
         return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
       }
-    }
+    },
   },
   methods: {
     handlekey(e) {
@@ -55,7 +55,10 @@ export default {
       this.hoverIndex = value;
     },
 
-    hadnleLeave() {}
+    hadnleLeave() {},
+  
+
+   
   }
 };
 </script>
