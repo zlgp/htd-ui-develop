@@ -211,8 +211,19 @@
     <htd-tag type="warning" closable effect="plain">超小标签</htd-tag>
     <htd-tag type="danger" closable effect="plain">超小标签</htd-tag>
 
+    <!--分页  -->
 
-    <!--  -->
+    <div>
+      <h2>分页</h2>
+      <htd-pagination
+        :page-count="20"
+        @current-change="handlePageChange"
+        @prev-click="handlePrevClick"
+        @next-click="handleNextClick"
+        :background="true"
+        :hide-on-single-page="true"
+      ></htd-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -264,6 +275,15 @@ export default {
     },
     handleClose(e) {
       console.log(e);
+    },
+    handlePageChange(val) {
+      console.log(val);
+    },
+    handlePrevClick(val) {
+      console.log(val);
+    },
+    handleNextClick(val) {
+      console.log(val);
     }
   }
 };

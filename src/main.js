@@ -57,6 +57,9 @@ Vue.component(Rate.name, Rate)
 import Tag from "./components/tag.vue"
 Vue.component(Tag.name, Tag)
 
+import Pagination from "./components/pagination.vue"
+Vue.component(Pagination.name, Pagination)
+
 
 
 new Vue({
