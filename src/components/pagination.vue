@@ -116,8 +116,7 @@ export default {
     },
     showNextMore(val) {
       if (!val) this.quicknextIconClass = "htd-icon-checkmore";
-    },
-  
+    }
   },
   computed: {
     pageCounts() {
@@ -138,10 +137,10 @@ export default {
 
       const array = [];
       //上一个显示
+
+
       if (this.showPrevMore && !this.showNextMore) {
         const startPage = pageCount - (pagerCount - 2);
-        console.log(startPage);
-
         for (let i = startPage; i < pageCount; i++) {
           array.push(i);
         }
@@ -149,22 +148,20 @@ export default {
       //   下一个显示
       else if (!this.showPrevMore && this.showNextMore) {
         for (let i = 2; i < pagerCount; i++) {
-          console.log(i);
-
           array.push(i);
         }
       }
       //   都显示的时候
       else if (this.showPrevMore && this.showNextMore) {
-        const offset = Math.floor(pagerCount / 2) - 1;
-        console.log(offset, "offset");
-                      
-        for (let i = currentPage - offset; i <= currentPage + offset; i++) {
-          console.log(i,"i");
+        // const offset = Math.floor(pagerCount / 2) - 1;
 
+        for (let i = currentPage; i <= this.pageCounts; i++) {
           array.push(i);
+          console.log(i,"i");
+          
         }
       } else {
+        // 第一次进来的渲染,都为false
         for (let i = 2; i < pageCount; i++) {
           array.push(i);
         }
@@ -177,7 +174,7 @@ export default {
   methods: {
     getPages() {
       const pagerCount = this.pagerCount;
-      //    一般页码
+      //    一半页码,减一是剪掉固定的1
       const halfPagerCount = (pagerCount - 1) / 2;
       //   当前页
       const currentPage = Number(this.pageCurrent);
@@ -205,21 +202,48 @@ export default {
     //	currentPage 改变时会触发
     handlepageClick(item) {
       this.pageCurrent = item;
+      if (!isNaN(this.pageCurrent)) {
+        if (this.pageCurrent < 1) {
+          this.pageCurrent = 1;
+        }
+        if (this.pageCurrent > this.pageCounts) {
+          this.pageCurrent = this.pageCounts;
+        }
+      }
       this.$emit("current-change", this.pageCurrent);
     },
     handlePrevClick() {
+      let pagerCountOffset = this.pagerCount - 2;
       if (this.pageCurrent != 1) {
-        this.pageCurrent--;
+        this.pageCurrent = this.pageCurrent - pagerCountOffset;
+        this.getPages();
       }
-      this.getPages();
+      if (!isNaN(this.pageCurrent)) {
+        if (this.pageCurrent < 1) {
+          this.pageCurrent = 1;
+        }
+        if (this.pageCurrent > this.pageCounts) {
+          this.pageCurrent = this.pageCounts;
+        }
+      }
 
       this.$emit("prev-click", this.pageCurrent);
     },
     handleNextClick() {
+      let pagerCountOffset = this.pagerCount - 2;
       if (this.pageCurrent < this.pageCounts) {
-        this.pageCurrent++;
+        // this.pageCurrent++;
+        this.pageCurrent = this.pageCurrent + pagerCountOffset;
+        this.getPages();
       }
-      this.getPages();
+      if (!isNaN(this.pageCurrent)) {
+        if (this.pageCurrent < 1) {
+          this.pageCurrent = 1;
+        }
+        if (this.pageCurrent > this.pageCounts) {
+          this.pageCurrent = this.pageCounts;
+        }
+      }
       this.$emit("next-click", this.pageCurrent);
     }
   }
