@@ -155,10 +155,8 @@ export default {
       else if (this.showPrevMore && this.showNextMore) {
         // const offset = Math.floor(pagerCount / 2) - 1;
 
-        for (let i = currentPage; i <= this.pageCounts; i++) {
+        for (let i = currentPage; i <= this.pageCounts ; i++) {
           array.push(i);
-          console.log(i,"i");
-          
         }
       } else {
         // 第一次进来的渲染,都为false
@@ -166,7 +164,6 @@ export default {
           array.push(i);
         }
       }
-
       return array;
     }
   },
